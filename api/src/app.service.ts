@@ -11,11 +11,28 @@ export class AppService {
     private tamagotchiRepository: Repository<Tamagotchi>,
   ) {}
 
-  getHello(): string {
-    return 'Hello World!!!!';
+  async getTamagotchis() {
+    return await this.tamagotchiRepository.find({
+      order: { id: 'ASC' },
+    });
+  }
+
+  async getTamagotchi(id: number) {
+    return await this.tamagotchiRepository.findOneBy({ id });
   }
 
   async createTamagotchi(tamagotchi: TamagotchiDto) {
-    return await this.tamagotchiRepository.save(tamagotchi);
+    await this.tamagotchiRepository.save(tamagotchi);
+    return await this.getTamagotchis();
+  }
+
+  async updateTamagotchi(id: number, tamagotchi: TamagotchiDto) {
+    await this.tamagotchiRepository.update(id, tamagotchi);
+    return await this.getTamagotchis();
+  }
+
+  async deleteTamagotchi(id: number) {
+    await this.tamagotchiRepository.delete(id);
+    return await this.getTamagotchis();
   }
 }

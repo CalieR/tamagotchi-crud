@@ -17,7 +17,7 @@ import { ConfigModule } from '@nestjs/config';
       database: 'tamagotchi-crud',
       entities: [Tamagotchi],
       synchronize: true,
-      //logging: true,
+      logging: false,
     }),
     TypeOrmModule.forFeature([Tamagotchi]),
   ],

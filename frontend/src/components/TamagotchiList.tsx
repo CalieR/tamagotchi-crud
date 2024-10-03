@@ -1,7 +1,16 @@
-const TamagotchiList = () => {
+import { Tamagotchi } from '../types/types';
+import TamagotchiListItem from './TamagotchiListItem';
+
+interface TamagotchiListProps {
+  tamagotchis: Tamagotchi[];
+}
+
+const TamagotchiList = ({ tamagotchis }: TamagotchiListProps) => {
   return (
     <div>
-      <h2>Tamagotchi List</h2>
+      {tamagotchis.map((tamagotchi) => {
+        return <TamagotchiListItem tamagotchi={tamagotchi} />;
+      })}
     </div>
   );
 };

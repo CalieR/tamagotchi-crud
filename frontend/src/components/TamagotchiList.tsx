@@ -7,7 +7,7 @@ interface TamagotchiListProps {
 
 const TamagotchiList = ({ tamagotchis }: TamagotchiListProps) => {
   return (
-    <div>
+    <div className='list-container'>
       {tamagotchis.map((tamagotchi) => {
         return <TamagotchiListItem tamagotchi={tamagotchi} />;
       })}

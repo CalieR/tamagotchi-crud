@@ -5,7 +5,6 @@ import { Tamagotchi } from './types/types';
 import TamagotchiList from './components/TamagotchiList';
 
 function App() {
-
   const [tamagotchis, setTamagotchis] = useState<Tamagotchi[]>([]);
 
   useEffect(() => {
@@ -22,10 +21,11 @@ function App() {
   return (
     <>
       <div>
-        <h1>Tamagotchi Simulator</h1>
+        <div className='title'>
+          <h1>Tamagotchi Simulator</h1>
+        </div>
         {!tamagotchis && <p>Loading...</p>}
-        {tamagotchis &&
-          <TamagotchiList tamagotchis={tamagotchis}/>}
+        {tamagotchis && <TamagotchiList tamagotchis={tamagotchis} />}
       </div>
     </>
   );

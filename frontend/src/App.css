@@ -35,8 +35,25 @@
   font-weight: bold;
 }
 
+.create-tamagotchi-form-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  flex: 1;
+}
+
 @media (max-width: 300px) {
-  /* .books-container {
+  .list-container {
     flex-direction: column;
-  } */
+  }
 }

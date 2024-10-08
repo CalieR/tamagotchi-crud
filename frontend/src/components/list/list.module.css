@@ -6,3 +6,9 @@
     margin: 0 auto;
     justify-content: center;
   }
+
+  @media (max-width: 300px) {
+    .listContainer {
+      flex-direction: column;
+    }
+  }

@@ -7,43 +7,44 @@ interface ListItemProps {
 
 const ListItem = ({ tamagotchi }: ListItemProps) => {
   const { listItemCard, title, itemDetails, listItemCardActions, detailCategory } = styles;
+  const {name, species, hunger, health, happiness, energy, cleanliness} = tamagotchi;
   return (
     <div className={listItemCard}>
       <div>
         <div className={title}>
-          <h2>{tamagotchi.name}</h2>
+          <h2>{name}</h2>
         </div>
         <div className={itemDetails}>
           <div className={detailCategory}>Species:</div>
-          <div>{tamagotchi.species}</div>
+          <div>{species}</div>
         </div>
         {/* <div className={itemDetails}>}>
           <div className={detailCategory}>Date of Birth:</div>
-          <div>{tamagotchi.dateOfBirth}</div>
+          <div>{dateOfBirth}</div>
         </div> */}
         <div className={itemDetails}>
           <div className={detailCategory}>Hunger:</div>
-          <div>{tamagotchi.hunger}</div>
+          <div>{hunger}</div>
         </div>
         <div className={itemDetails}>
           <div className={detailCategory}>Health:</div>
-          <div>{tamagotchi.health}</div>
+          <div>{health}</div>
         </div>
         <div className={itemDetails}>
           <div className={detailCategory}>Happiness:</div>
-          <div>{tamagotchi.happiness}</div>
+          <div>{happiness}</div>
         </div>
         <div className={itemDetails}>
           <div className={detailCategory}>Energy:</div>
-          <div>{tamagotchi.energy}</div>
+          <div>{energy}</div>
         </div>
         <div className={itemDetails}>
           <div className={detailCategory}>Cleanliness:</div>
-          <div>{tamagotchi.cleanliness}</div>
+          <div>{cleanliness}</div>
         </div>
         <div className={listItemCardActions}>
-          <button>Edit</button>
-          <button>Delete</button>
+          <button type='button'>Edit</button>
+          <button type='button'>Delete</button>
         </div>
       </div>
     </div>

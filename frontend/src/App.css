@@ -23,8 +23,4 @@
   flex: 1;
 }
 
-@media (max-width: 300px) {
-  .list-container {
-    flex-direction: column;
-  }
-}
+

@@ -33,6 +33,8 @@ function App() {
       .post('http://localhost:3000/tamagotchi', { name, species })
       .then((response) => {
         setTamagotchis(response.data);
+        setTamagotchiName('');
+        setTamagotchiSpecies('');
       })
       .catch((error) => {
         console.log(error);
@@ -52,6 +54,7 @@ function App() {
                 type="text"
                 id="name"
                 name="tamagotchiName"
+                value={tamagotchiName}
                 onChange={(e) => setTamagotchiName(e.target.value)}
               />
             </div>
@@ -61,6 +64,7 @@ function App() {
                 type="text"
                 id="species"
                 name="tamagotchiSpecies"
+                value={tamagotchiSpecies}
                 onChange={(e) => setTamagotchiSpecies(e.target.value)}
               />
             </div>

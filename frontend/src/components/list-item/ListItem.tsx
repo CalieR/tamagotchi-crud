@@ -3,11 +3,20 @@ import styles from './listItem.module.css';
 
 interface ListItemProps {
   tamagotchi: Tamagotchi;
+  handleDelete: (id: number) => void;
 }
 
-const ListItem = ({ tamagotchi }: ListItemProps) => {
-  const { listItemCard, title, itemDetails, listItemCardActions, detailCategory } = styles;
-  const {name, species, hunger, health, happiness, energy, cleanliness} = tamagotchi;
+const ListItem = ({ tamagotchi, handleDelete }: ListItemProps) => {
+  const {
+    listItemCard,
+    title,
+    itemDetails,
+    listItemCardActions,
+    detailCategory,
+  } = styles;
+  const { name, species, hunger, health, happiness, energy, cleanliness } =
+    tamagotchi;
+
   return (
     <div className={listItemCard}>
       <div>
@@ -43,8 +52,8 @@ const ListItem = ({ tamagotchi }: ListItemProps) => {
           <div>{cleanliness}</div>
         </div>
         <div className={listItemCardActions}>
-          <button type='button'>Edit</button>
-          <button type='button'>Delete</button>
+          <button type="button">Edit</button>
+          <button type="button" onClick={() =>handleDelete(tamagotchi.id)}>Delete</button>
         </div>
       </div>
     </div>

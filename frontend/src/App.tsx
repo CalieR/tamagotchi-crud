@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import API from './constants';
 import './App.css';
 import { Tamagotchi } from './types/types';
 import TamagotchiList from './components/list/List';
@@ -12,15 +13,24 @@ function App() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/tamagotchi')
+      .get(`${API.BASE_URL}/tamagotchi`)
       .then((response) => {
-        const data = response.data;
-        setTamagotchis(data);
+        setTamagotchis(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, []);
+
+  const handleDelete = (id: number) => {
+    axios
+      .delete(`${API.BASE_URL}/tamagotchi/${id}`)
+      .then((response) => {
+        setTamagotchis(response.data);
+        alert(`Tamagotchi ${id} deleted!`);
+      })
+      .catch((error) => console.log(error));
+  };
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -30,9 +40,10 @@ function App() {
     const name = formData.get('name');
     const species = formData.get('species');
     axios
-      .post('http://localhost:3000/tamagotchi', { name, species })
+      .post(`${API.BASE_URL}/tamagotchi`, { name, species })
       .then((response) => {
         setTamagotchis(response.data);
+        alert(`Tamagotchi ${name} added!`);
         setTamagotchiName('');
         setTamagotchiSpecies('');
       })
@@ -74,7 +85,12 @@ function App() {
           </form>
         </div>
         {!tamagotchis && <p>Loading...</p>}
-        {tamagotchis && <TamagotchiList tamagotchis={tamagotchis} />}
+        {tamagotchis && (
+          <TamagotchiList
+            tamagotchis={tamagotchis}
+            handleDelete={handleDelete}
+          />
+        )}
       </div>
     </>
   );

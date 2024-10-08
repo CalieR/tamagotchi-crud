@@ -1,0 +1,36 @@
+.listItemCard {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.itemDetails {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+}
+
+.detailCategory {
+  width: 60%;
+  font-weight: bold;
+}
+
+.listItemCardActions {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: space-evenly;
+  padding: 15px;
+}
+
+.listItemCardActions button {
+  width: 30%;
+}

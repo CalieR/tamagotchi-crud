@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import { Tamagotchi } from './types/types';
-import TamagotchiList from './components/TamagotchiList';
+import TamagotchiList from './components/list/List';
 
 function App() {
   const [tamagotchis, setTamagotchis] = useState<Tamagotchi[]>([]);
@@ -30,7 +30,7 @@ function App() {
     const name = formData.get('name');
     const species = formData.get('species');
     axios
-      .post('http://localhost:3000/tamagotchi', {name, species})
+      .post('http://localhost:3000/tamagotchi', { name, species })
       .then((response) => {
         setTamagotchis(response.data);
       })
@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       <div>
-        <div className="title">
+        <div className="header">
           <h1>Tamagotchi Simulator</h1>
         </div>
         <div className="create-tamagotchi-form-container">
@@ -61,7 +61,7 @@ function App() {
                 type="text"
                 id="species"
                 name="tamagotchiSpecies"
-                onChange={(e) => setTamagotchiSpecies(e.target.value)}       
+                onChange={(e) => setTamagotchiSpecies(e.target.value)}
               />
             </div>
             <div className="form-group">

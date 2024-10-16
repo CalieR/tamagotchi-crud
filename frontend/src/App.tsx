@@ -22,15 +22,7 @@ function App() {
       });
   }, []);
 
-  const handleDelete = (id: number) => {
-    axios
-      .delete(`${API.BASE_URL}/tamagotchi/${id}`)
-      .then((response) => {
-        setTamagotchis(response.data);
-        alert(`Tamagotchi ${id} deleted!`);
-      })
-      .catch((error) => console.log(error));
-  };
+
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -85,12 +77,7 @@ function App() {
           </form>
         </div>
         {!tamagotchis && <p>Loading...</p>}
-        {tamagotchis && (
-          <TamagotchiList
-            tamagotchis={tamagotchis}
-            handleDelete={handleDelete}
-          />
-        )}
+        {tamagotchis && <TamagotchiList tamagotchis={tamagotchis} setTamagotchis={setTamagotchis}/>}
       </div>
     </>
   );

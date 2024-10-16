@@ -1,12 +1,15 @@
 import { Tamagotchi } from '../../types/types';
 import styles from './listItem.module.css';
+import axios from 'axios';
+import API from '../../constants';
+import { formatDate } from '../../utils/utils';
 
 interface ListItemProps {
   tamagotchi: Tamagotchi;
-  handleDelete: (id: number) => void;
+  setTamagotchis: (tamagotchis: Tamagotchi[]) => void;
 }
 
-const ListItem = ({ tamagotchi, handleDelete }: ListItemProps) => {
+const ListItem = ({ tamagotchi, setTamagotchis }: ListItemProps) => {
   const {
     listItemCard,
     title,
@@ -14,8 +17,30 @@ const ListItem = ({ tamagotchi, handleDelete }: ListItemProps) => {
     listItemCardActions,
     detailCategory,
   } = styles;
-  const { name, species, hunger, health, happiness, energy, cleanliness } =
-    tamagotchi;
+  const {
+    name,
+    species,
+    dateOfBirth,
+    hunger,
+    health,
+    happiness,
+    energy,
+    cleanliness,
+  } = tamagotchi;
+
+  const handleDelete = (id: number) => {
+    axios
+      .delete(`${API.BASE_URL}/tamagotchi/${id}`)
+      .then((response) => {
+        setTamagotchis(response.data);
+        alert(`Tamagotchi ${id} deleted!`);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleFeed = (id: number) => {
+    console.log('Feeding tamagotchi ' + id);
+  };
 
   return (
     <div className={listItemCard}>
@@ -25,12 +50,13 @@ const ListItem = ({ tamagotchi, handleDelete }: ListItemProps) => {
         </div>
         <div className={itemDetails}>
           <div className={detailCategory}>Species:</div>
+
           <div>{species}</div>
         </div>
-        {/* <div className={itemDetails}>}>
+        <div className={itemDetails}>
           <div className={detailCategory}>Date of Birth:</div>
-          <div>{dateOfBirth}</div>
-        </div> */}
+          <div>{formatDate(dateOfBirth.toString())}</div>
+        </div>
         <div className={itemDetails}>
           <div className={detailCategory}>Hunger:</div>
           <div>{hunger}</div>
@@ -52,8 +78,12 @@ const ListItem = ({ tamagotchi, handleDelete }: ListItemProps) => {
           <div>{cleanliness}</div>
         </div>
         <div className={listItemCardActions}>
-          <button type="button">Edit</button>
-          <button type="button" onClick={() =>handleDelete(tamagotchi.id)}>Delete</button>
+          <button type="button" onClick={() => handleFeed(tamagotchi.id)}>
+            Feed Me!
+          </button>
+          <button type="button" onClick={() => handleDelete(tamagotchi.id)}>
+            Delete
+          </button>
         </div>
       </div>
     </div>

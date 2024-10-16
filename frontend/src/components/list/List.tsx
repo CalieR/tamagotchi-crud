@@ -4,15 +4,15 @@ import styles from './list.module.css';
 
 interface ListProps {
   tamagotchis: Tamagotchi[];
-  handleDelete: (id: number) => void;
+  setTamagotchis: (tamagotchis: Tamagotchi[]) => void;
 }
 
-const List = ({ tamagotchis, handleDelete }: ListProps) => {
+const List = ({ tamagotchis, setTamagotchis }: ListProps) => {
   const { listContainer } = styles;
   return (
     <div className={listContainer}>
       {tamagotchis.map((tamagotchi) => {
-        return <ListItem key={tamagotchi.id} tamagotchi={tamagotchi} handleDelete={handleDelete} />;
+        return <ListItem key={tamagotchi.id} tamagotchi={tamagotchi} setTamagotchis={setTamagotchis} />;
       })}
     </div>
   );

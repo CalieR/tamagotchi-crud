@@ -4,25 +4,27 @@ import API from './constants';
 import './App.css';
 import { Tamagotchi } from './types/types';
 import TamagotchiList from './components/list/List';
+import getTamagotchis from './service/tamagotchiService';
 
 function App() {
   const [tamagotchis, setTamagotchis] = useState<Tamagotchi[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | undefined>('');
 
   const [tamagotchiName, setTamagotchiName] = useState('');
   const [tamagotchiSpecies, setTamagotchiSpecies] = useState('');
 
+  const fetchTamagotchis = async () => {
+    const response = await getTamagotchis();
+    setTamagotchis(response.data);
+    setError(response.error);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    axios
-      .get(`${API.BASE_URL}/tamagotchi`)
-      .then((response) => {
-        setTamagotchis(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setLoading(true);
+    fetchTamagotchis();
   }, []);
-
-
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -76,8 +78,14 @@ function App() {
             </div>
           </form>
         </div>
-        {!tamagotchis && <p>Loading...</p>}
-        {tamagotchis && <TamagotchiList tamagotchis={tamagotchis} setTamagotchis={setTamagotchis}/>}
+        {loading && <p>Loading...</p>}
+        {!loading && error && <p>{error}</p>}
+        {!loading && tamagotchis && (
+          <TamagotchiList
+            tamagotchis={tamagotchis}
+            setTamagotchis={setTamagotchis}
+          />
+        )}
       </div>
     </>
   );

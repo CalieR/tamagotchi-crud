@@ -1,4 +1,4 @@
-export type Tamagotchi = {
+ type Tamagotchi = {
   id: number;
   name: string;
   species: string;
@@ -9,3 +9,11 @@ export type Tamagotchi = {
   energy: number;
   cleanliness: number;
 };
+
+interface ApiResponse<T>  {
+  data: T,
+  error?: string
+}
+
+export type { Tamagotchi, ApiResponse}
+

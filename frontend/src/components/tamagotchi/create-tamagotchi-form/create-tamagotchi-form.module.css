@@ -1,0 +1,16 @@
+.createTamagotchiFormContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .formGroup label {
+    flex: 1;
+  }

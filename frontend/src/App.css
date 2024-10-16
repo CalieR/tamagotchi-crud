@@ -6,21 +6,6 @@
   width: 100%;
 }
 
-.create-tamagotchi-form-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
 
-.form-group {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-  margin-bottom: 10px;
-}
-
-.form-group label {
-  flex: 1;
-}
 
 

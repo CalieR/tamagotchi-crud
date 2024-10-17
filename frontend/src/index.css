@@ -1,1 +1,7 @@
 /* css for the index.html file ie the whole project */
+
+@import url('https://fonts.googleapis.com/css2?family=Honk&family=Love+Ya+Like+A+Sister&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

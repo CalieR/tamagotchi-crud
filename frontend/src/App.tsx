@@ -1,13 +1,10 @@
 import './App.css';
+import Header from './components/Header';
 
 function App() {
   return (
     <>
-      <div>
-        <div>
-          <h1>Tamagotchi Simulator</h1>
-        </div>
-      </div>
+     <Header />
     </>
   );
 }

@@ -9,10 +9,6 @@ export default {
     container: {
       center: true,
       padding: '1.25rem',
-      screens: {
-        xl: '120px',
-        '2xl': '1200px',
-      },
     },
   },
   daisyui: {

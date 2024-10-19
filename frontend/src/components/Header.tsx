@@ -42,7 +42,7 @@ const Header = () => {
             </div>
           </div>
           <div className="navbar-center">
-            <a className="font-honk btn btn-ghost text-xl">
+            <a className="font-honk btn btn-ghost text-7xl">
               Tamagotchi Simulator
             </a>
           </div>

@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header className="sticky top-0 py-2">
+    <header className="sticky top-0 py-2 mb-4">
       <div className="container">
         <div className="navbar bg-base-100">
           <div className="navbar-start">

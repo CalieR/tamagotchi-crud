@@ -1,3 +1,5 @@
+import { SignedIn, SignedOut, SignInButton, SignOutButton } from "@clerk/clerk-react";
+
 const Header = () => {
   return (
     <header className="bg-primary text-neutral">
@@ -45,6 +47,7 @@ const Header = () => {
           </div>
           <a className="btn btn-ghost text-3xl font-honk">Tamagotchi</a>
         </div>
+        <SignedIn>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
@@ -68,24 +71,15 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
-          {/* <button className="btn btn-ghost btn-xs sm:btn-sm md:btn-md lg:btn-lg">Button</button> */}
-          <button className="btn btn-square btn-ghost">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="inline-block h-5 w-5 stroke-current"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-              ></path>
-            </svg>
-          </button>
+        <div className="navbar-end mr-4">
+         <SignOutButton />
         </div>
+        </SignedIn>
+        <SignedOut>
+        <div className="navbar-end mr-4">
+         <SignInButton />
+        </div>
+        </SignedOut>
       </div>
     </header>
   );

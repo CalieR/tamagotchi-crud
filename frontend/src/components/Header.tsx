@@ -1,7 +1,7 @@
 const Header = () => {
   return (
-    <header className="border-2 border-sky-500">
-      <div className="navbar bg-primary">
+    <header className="bg-primary text-neutral">
+      <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

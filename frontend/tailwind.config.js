@@ -12,7 +12,7 @@ export default {
     },
   },
   daisyui: {
-    themes: ['cyberpunk', 'acid'],
+    themes: ['cyberpunk', 'acid', 'bumblebee'],
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
 };

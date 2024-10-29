@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
+import UserPage from './components/UserPage';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           <Hero />
         </SignedOut>
         <SignedIn>
-          <p>Signed in</p>
+          <UserPage />
         </SignedIn>
       </main>
       <Footer />

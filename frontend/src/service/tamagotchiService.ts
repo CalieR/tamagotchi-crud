@@ -50,6 +50,9 @@ const getTamagotchis = async (): Promise<TableData> => {
    }
 }
 
+// const getTamagotchiByUser
+
+// also need to pass a user id 
 const createTamagotchi = (
   name: FormDataEntryValue | null,
   species: FormDataEntryValue | null

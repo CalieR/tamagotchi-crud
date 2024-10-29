@@ -22,6 +22,7 @@ const CreateTamagotchiForm = ({
     formData.append('species', tamagotchiSpecies);
     const name = formData.get('name');
     const species = formData.get('species');
+    // const userId: logged in user id 
     const response = await createTamagotchi(name, species);
     setTamagotchis(response.data);
     alert(`Tamagotchi ${name} added!`);

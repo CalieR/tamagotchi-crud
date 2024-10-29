@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignInButton, SignOutButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
 const Header = () => {
   return (
@@ -72,7 +72,8 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end mr-4">
-         <SignOutButton />
+          {/* user avatar */}
+         <UserButton />
         </div>
         </SignedIn>
         <SignedOut>

@@ -19,7 +19,7 @@ Interactions and in-game enhancements:
 - Delay: Calculate the time since last interaction and display an according sprite / image / message when the user returns to their pet ie are they sad, hungry, even dead?!?!?
 - Charting: Show pictographic representations of what's been happening since the tamagotchi was born
 
-Trello board for planning all of the upcoming epics and stories.
+Trello board for planning all of the upcoming epics and stories: [https://trello.com/b/jVFaS1jv/tamagotchi-app](https://trello.com/b/jVFaS1jv/tamagotchi-app)
 
 Tests 
 
@@ -37,6 +37,10 @@ Validation
 - Next I set up the frontend using Vite.  I created a list to display all the tamagotchis in the db, a button to delete a tamagotchi and a form to create new tamagotchis.   I also created a tamagotchi service to handle the api calls to the backend.  Now I knew the basic CRUD app was connected and functional, I could park it and think about what I really want from this app and plan how to do that.
 
 - Styling was needed next, so I installed Tailwind and Daisy UI, then set about designing a bright landing page with basic header / main / footer sections.  
+
+- Once the theme was in place, I added Clerk to handle login and authentication.  Logged in users would either see their own tamagotchi, or a form to create a new tamagotchi if they didn't have one.  Logged out users currently see a placeholder hero component that can have some more content added later.
+
+- At this point I started thinking about how I might need to structure the services more, because I want to add different routes for different types of users.  An admin user can see a dashboard with all the tamagotchis, and a user can only see their own tamagotchi.  I'll probably come back to the admin part later but I already have table / list components created to get that started.  I'm also going to need an interactions service to keep a track of all the interactions the user has with their tamagotchi.
 
 ## What have I learned?
 

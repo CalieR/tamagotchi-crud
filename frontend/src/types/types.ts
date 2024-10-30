@@ -2,6 +2,7 @@ type Tamagotchi = {
   id: number;
   name: string;
   species: string;
+  owner: string;
   dateOfBirth: Date;
   hunger: number;
   health: number;

@@ -11,6 +11,9 @@ export class Tamagotchi {
   @Column()
   species: string;
 
+  @Column()
+  owner: string;
+
   @Column({ default: new Date() })
   dateOfBirth: Date;
 

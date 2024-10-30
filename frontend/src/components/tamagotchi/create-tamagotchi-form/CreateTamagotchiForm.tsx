@@ -1,17 +1,11 @@
 import { useState } from 'react';
-import styles from './create-tamagotchi-form.module.css';
-import { Tamagotchi } from '../../../types/types';
 import { createTamagotchi } from '../../../service/tamagotchiService';
 
 interface CreateTamagotchiFormProps {
-  setTamagotchis: (tamagotchis: Tamagotchi[]) => void;
+  userId: string;
 }
 
-const CreateTamagotchiForm = ({
-  setTamagotchis,
-}: CreateTamagotchiFormProps) => {
-  const { createTamagotchiFormContainer, formGroup } = styles;
-
+const CreateTamagotchiForm = ({ userId }: CreateTamagotchiFormProps) => {
   const [tamagotchiName, setTamagotchiName] = useState('');
   const [tamagotchiSpecies, setTamagotchiSpecies] = useState('');
 
@@ -22,20 +16,24 @@ const CreateTamagotchiForm = ({
     formData.append('species', tamagotchiSpecies);
     const name = formData.get('name');
     const species = formData.get('species');
-    // const userId: logged in user id 
-    const response = await createTamagotchi(name, species);
-    setTamagotchis(response.data);
+    const owner = userId;
+    const response = await createTamagotchi(name, species, owner);
+    console.log(response);
+    //setTamagotchis(response.data);
     alert(`Tamagotchi ${name} added!`);
     setTamagotchiName('');
     setTamagotchiSpecies('');
   };
 
   return (
-    <div className={createTamagotchiFormContainer}>
+    <div className="flex flex-col items-center justify-center">
       <form onSubmit={handleFormSubmit}>
-        <div className={formGroup}>
-          <label htmlFor="name">Name:</label>
+        <div className="flex flex-row gap-4 mb-4">
+          <label htmlFor="name" className="label w-full">
+            Name:
+          </label>
           <input
+            className="input input-bordered rounded-sm w-full"
             type="text"
             id="name"
             name="tamagotchiName"
@@ -43,9 +41,12 @@ const CreateTamagotchiForm = ({
             onChange={(e) => setTamagotchiName(e.target.value)}
           />
         </div>
-        <div className={formGroup}>
-          <label htmlFor="species">Species:</label>
+        <div className="flex flex-row gap-4 mb-4">
+          <label htmlFor="species" className="label w-full">
+            Species:
+          </label>
           <input
+            className="input input-bordered rounded-sm w-full"
             type="text"
             id="species"
             name="tamagotchiSpecies"
@@ -53,8 +54,10 @@ const CreateTamagotchiForm = ({
             onChange={(e) => setTamagotchiSpecies(e.target.value)}
           />
         </div>
-        <div className={formGroup}>
-          <button type="submit">Create Tamagotchi</button>
+        <div className="flex-1">
+          <button type="submit" className="btn btn-primary rounded-sm">
+            Create Tamagotchi
+          </button>
         </div>
       </form>
     </div>

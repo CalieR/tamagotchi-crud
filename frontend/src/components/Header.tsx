@@ -1,4 +1,9 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from '@clerk/clerk-react';
 
 const Header = () => {
   return (
@@ -48,38 +53,37 @@ const Header = () => {
           <a className="btn btn-ghost text-3xl font-honk">Tamagotchi</a>
         </div>
         <SignedIn>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
-        </div>
-        <div className="navbar-end mr-4">
-          {/* user avatar */}
-         <UserButton />
-        </div>
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
+              <li>
+                <a>Item 1</a>
+              </li>
+              <li>
+                <details>
+                  <summary>Parent</summary>
+                  <ul className="p-2">
+                    <li>
+                      <a>Submenu 1</a>
+                    </li>
+                    <li>
+                      <a>Submenu 2</a>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+              <li>
+                <a>Item 3</a>
+              </li>
+            </ul>
+          </div>
+          <div className="navbar-end mr-4">
+            <UserButton />
+          </div>
         </SignedIn>
         <SignedOut>
-        <div className="navbar-end mr-4">
-         <SignInButton />
-        </div>
+          <div className="navbar-end mr-4">
+            <SignInButton />
+          </div>
         </SignedOut>
       </div>
     </header>

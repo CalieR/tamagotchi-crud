@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createTamagotchi } from '../../../service/tamagotchiService';
+import { createTamagotchi } from '../../service/tamagotchiService';
 
 interface CreateTamagotchiFormProps {
   userId: string;
@@ -17,48 +17,49 @@ const CreateTamagotchiForm = ({ userId }: CreateTamagotchiFormProps) => {
     const name = formData.get('name');
     const species = formData.get('species');
     const owner = userId;
-    const response = await createTamagotchi(name, species, owner);
-    console.log(response);
-    //setTamagotchis(response.data);
-    alert(`Tamagotchi ${name} added!`);
-    setTamagotchiName('');
-    setTamagotchiSpecies('');
+    if (name && species) {
+      const response = await createTamagotchi(name, species, owner);
+      console.log(response);
+      //setTamagotchis(response.data);
+      alert(`Tamagotchi ${name} added!`);
+      setTamagotchiName('');
+      setTamagotchiSpecies('');
+    } else {
+      alert('Please fill in name and species');
+    }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center ">
+      <p className="mb-4 p-4">
+        Enter a name and a species for your new tamagotchi:
+      </p>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex flex-row gap-4 mb-4">
-          <label htmlFor="name" className="label w-full">
-            Name:
-          </label>
+        <label className="input input-bordered flex items-center mb-4">
           <input
-            className="input input-bordered rounded-sm w-full"
             type="text"
-            id="name"
+            className="grow"
+            placeholder="Name"
             name="tamagotchiName"
+            id="name"
             value={tamagotchiName}
             onChange={(e) => setTamagotchiName(e.target.value)}
           />
-        </div>
-        <div className="flex flex-row gap-4 mb-4">
-          <label htmlFor="species" className="label w-full">
-            Species:
-          </label>
+        </label>
+        <label className="input input-bordered flex items-center mb-4">
           <input
-            className="input input-bordered rounded-sm w-full"
             type="text"
-            id="species"
+            className="grow"
+            placeholder="Species"
             name="tamagotchiSpecies"
+            id="species"
             value={tamagotchiSpecies}
             onChange={(e) => setTamagotchiSpecies(e.target.value)}
           />
-        </div>
-        <div className="flex-1">
-          <button type="submit" className="btn btn-primary rounded-sm">
-            Create Tamagotchi
-          </button>
-        </div>
+        </label>
+        <button type="submit" className="btn btn-primary rounded-sm">
+          Create Tamagotchi
+        </button>
       </form>
     </div>
   );

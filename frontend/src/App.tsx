@@ -5,15 +5,15 @@ import Hero from './components/Hero';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import UserPage from './components/UserPage';
 import { useEffect, useState } from 'react';
-import { getTamagotchis } from './service/tamagotchiService';
 import { TableData } from './types/types';
+import { getTamagotchis } from './service/tamagotchiService';
 
 function App() {
   const [tamagotchis, setTamagotchis] = useState<TableData>();
   const [error, setError] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const fetchExpenses = async () => {
+  const fetchTamagotchis = async () => {
     const response = await getTamagotchis();
     setTamagotchis(response);
     setError(response.error);
@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     setLoading(true);
-    fetchExpenses();
+    fetchTamagotchis();
   }, []);
   return (
     <div className="flex flex-col h-screen">

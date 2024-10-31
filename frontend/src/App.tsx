@@ -36,7 +36,7 @@ function App() {
           {loading && <p>loading...</p>}
           {!loading && error && <p>{error}</p>}
           {!loading && !error && tamagotchis && (
-            <UserPage tamagotchis={tamagotchis} />
+            <UserPage tamagotchis={tamagotchis} setTamagotchis={setTamagotchis}/>
           )}
         </SignedIn>
       </main>

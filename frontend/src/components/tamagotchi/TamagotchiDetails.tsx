@@ -1,6 +1,9 @@
+import { Tamagotchi } from "../../types/types";
+import { formatDate } from "../../utils/utils";
+
 interface TamagotchiDetailsProps {
   userName: string | null;
-  userTamagotchi: Record<string, number | string>;
+  userTamagotchi: Tamagotchi;
 }
 
 const TamagotchiDetails = (props: TamagotchiDetailsProps) => {
@@ -22,7 +25,7 @@ const TamagotchiDetails = (props: TamagotchiDetailsProps) => {
             {userTamagotchi.name} is a {userTamagotchi.species}.
           </p>
           <p>
-            {userTamagotchi.name} was born on {userTamagotchi.dateOfBirth}.
+            {userTamagotchi.name} was born on {formatDate(userTamagotchi.dateOfBirth.toString())}.
           </p>
         </div>
       </div>

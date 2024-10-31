@@ -1,15 +1,13 @@
 import { useUser } from '@clerk/clerk-react';
+import { Tamagotchi } from '../types/types';
 import CreateTamagotchiForm from './tamagotchi/CreateTamagotchiForm';
-import { TableData } from '../types/types';
 import TamagotchiDetails from './tamagotchi/TamagotchiDetails';
 
 interface UserPageProps {
-  tamagotchis: TableData;
+  tamagotchis: Tamagotchi[];
 }
 
 const UserPage = ({ tamagotchis }: UserPageProps) => {
-  const { rows } = tamagotchis;
-
   const { user, isLoaded, isSignedIn } = useUser();
   console.log(user);
 
@@ -19,10 +17,13 @@ const UserPage = ({ tamagotchis }: UserPageProps) => {
   }
 
   if (isSignedIn) {
-    const userTamagotchi = rows.find((row) => row.owner === user.id);
+    const userTamagotchi = tamagotchis.find((tama) => tama.owner === user.id);
     if (typeof userTamagotchi !== 'undefined') {
       return (
-        <TamagotchiDetails userName={user.fullName} userTamagotchi={userTamagotchi} />
+        <TamagotchiDetails
+          userName={user.fullName}
+          userTamagotchi={userTamagotchi}
+        />
       );
     } else {
       return <CreateTamagotchiForm userId={user.id} />;

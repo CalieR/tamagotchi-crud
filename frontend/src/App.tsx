@@ -5,22 +5,21 @@ import Hero from './components/Hero';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import UserPage from './components/UserPage';
 import { useEffect, useState } from 'react';
-import { TableData } from './types/types';
-import { getTamagotchis } from './service/tamagotchiService';
+import { Tamagotchi } from './types/types';
+import { getAllTamagotchis } from './service/tamagotchi/tamagotchi.api';
 
 function App() {
-  const [tamagotchis, setTamagotchis] = useState<TableData>();
+  const [tamagotchis, setTamagotchis] = useState<Tamagotchi[]>([]);
   const [error, setError] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
 
   const fetchTamagotchis = async () => {
-    const response = await getTamagotchis();
-    setTamagotchis(response);
+    const response = await getAllTamagotchis();
+
+    setTamagotchis(response.data);
     setError(response.error);
     setLoading(false);
   };
-
-  console.log(error, loading);
 
   useEffect(() => {
     setLoading(true);
@@ -37,7 +36,7 @@ function App() {
           {loading && <p>loading...</p>}
           {!loading && error && <p>{error}</p>}
           {!loading && !error && tamagotchis && (
-            <UserPage tamagotchis={tamagotchis}  />
+            <UserPage tamagotchis={tamagotchis} />
           )}
         </SignedIn>
       </main>

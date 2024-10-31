@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createTamagotchi } from '../../service/tamagotchiService';
+import { createTamagotchi } from '../../service/tamagotchi/tamagotchi.api';
 
 interface CreateTamagotchiFormProps {
   userId: string;

@@ -21,6 +21,12 @@ export class AppService {
     return await this.tamagotchiRepository.findOneBy({ id });
   }
 
+  async getTamagotchiByUserId(userId: string) {
+    return await this.tamagotchiRepository.findOneBy({
+      owner: userId,
+    });
+  }
+
   async createTamagotchi(tamagotchi: TamagotchiDto) {
     await this.tamagotchiRepository.save(tamagotchi);
     return await this.getTamagotchis();

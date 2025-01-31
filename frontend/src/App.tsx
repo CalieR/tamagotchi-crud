@@ -4,27 +4,8 @@ import Footer from './components/Footer';
 import Hero from './components/Hero';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import UserPage from './components/UserPage';
-import { useEffect, useState } from 'react';
-import { Tamagotchi } from './types/types';
-import { getAllTamagotchis } from './service/tamagotchi/tamagotchi.api';
 
 function App() {
-  const [tamagotchis, setTamagotchis] = useState<Tamagotchi[]>([]);
-  const [error, setError] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState<boolean>(false);
-
-  const fetchTamagotchis = async () => {
-    const response = await getAllTamagotchis();
-
-    setTamagotchis(response.data);
-    setError(response.error);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    setLoading(true);
-    fetchTamagotchis();
-  }, []);
   return (
     <div className="flex flex-col h-screen">
       <Header />
@@ -33,11 +14,7 @@ function App() {
           <Hero />
         </SignedOut>
         <SignedIn>
-          {loading && <p>loading...</p>}
-          {!loading && error && <p>{error}</p>}
-          {!loading && !error && tamagotchis && (
-            <UserPage tamagotchis={tamagotchis} setTamagotchis={setTamagotchis}/>
-          )}
+          <UserPage />
         </SignedIn>
       </main>
       <Footer />

@@ -34,6 +34,13 @@ export class AppController {
     return await this.appService.getTamagotchi(id);
   }
 
+  @Get('user/tamagotchi')
+  async getTamagotchiByUserId(@Param('userId') userId: string) {
+    // is the user logged in?
+    // if not: 403 forbidden
+    return await this.appService.getTamagotchiByUserId(userId);
+  }
+
   @Post('tamagotchi')
   async createTamagotchi(@Body() tamagotchi: TamagotchiDto) {
     return await this.appService.createTamagotchi(tamagotchi);

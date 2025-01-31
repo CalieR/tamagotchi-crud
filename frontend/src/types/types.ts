@@ -12,7 +12,7 @@ type Tamagotchi = {
 };
 
 interface ApiResponse<T> {
-  data: T;
+  data: T | null;
   error?: string;
 }
 

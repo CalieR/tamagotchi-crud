@@ -1,13 +1,11 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import { createTamagotchi } from '../../service/tamagotchi/tamagotchi.api';
-import { Tamagotchi } from '../../types/types';
 
 interface CreateTamagotchiFormProps {
   userId: string;
-  setTamagotchis: Dispatch<SetStateAction<Tamagotchi[]>>;
 }
 
-const CreateTamagotchiForm = ({ userId, setTamagotchis }: CreateTamagotchiFormProps) => {
+const CreateTamagotchiForm = ({ userId }: CreateTamagotchiFormProps) => {
   const [tamagotchiName, setTamagotchiName] = useState('');
   const [tamagotchiSpecies, setTamagotchiSpecies] = useState('');
 
@@ -20,9 +18,8 @@ const CreateTamagotchiForm = ({ userId, setTamagotchis }: CreateTamagotchiFormPr
     const species = formData.get('species');
     const owner = userId;
     if (name && species) {
-      const response = await createTamagotchi(name, species, owner);
-      console.log(response);
-      setTamagotchis(response.data);
+      await createTamagotchi(name, species, owner);
+      // setTamagotchis(response.data);
       alert(`Tamagotchi ${name} added!`);
       setTamagotchiName('');
       setTamagotchiSpecies('');
